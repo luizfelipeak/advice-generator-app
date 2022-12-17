@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@800&&display=swap');
+
+:root {
+  --color-white: hsl(0, 0%, 100%);
+  --color-light-cyan: hsl(193, 38%, 86%);
+  --color-neon-green: hsl(150, 100%, 66%);
+  --color-gray-blue: hsl(217, 19%, 38%);
+  --color-dark-blue: hsl(217, 19%, 24%);
+  --color-very-dark-blue: hsl(218, 23%, 16%);
+
+  --ff-main: 'Manrope', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+picture,
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  font-family: var(--ff-main);
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  grid-template-columns: 1fr;
+  min-height: 100vh;
+  background-color: var(--color-very-dark-blue);
+}
+
+main {
+  position: relative;
+  padding: 1em;
+}
+
+/* ----- Loading ----- */
+.loading {
+  font-size: 28px;
+  color: var(--color-neon-green);
+  animation: loading 1.5s ease infinite;
+}
+
+@keyframes loading {
+  50% {
+    color: var(--color-very-dark-blue);
+  }
+  100% {
+    color: var(--color-neon-green);
+  }
+}
+
+/* ----- Advice card ----- */
+.card {
+  display: none;
+  justify-items: center;
+  gap: 1em;
+  background-color: var(--color-dark-blue);
+  box-shadow: 0 0.5em 1em hsl(218, 23%, 13%);
+  padding: 1em;
+  border-radius: 0.5em;
+  max-width: 34rem;
+  position: relative;
+}
+
+.card__title {
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  color: var(--color-neon-green);
+  margin-top: 1rem;
+}
+
+.card__container {
+  font-size: 1.2rem;
+  text-align: center;
+  line-height: 1.6;
+  color: var(--color-light-cyan);
+}
+
+.card__container__advice::before {
+  content: open-quote;
+}
+
+.card__container__advice::after {
+  content: close-quote;
+}
+
+.card__svg--mobile {
+  max-width: 100%;
+  margin-bottom: 3rem;
+}
+
+.card__svg--desktop {
+  display: none;
+  max-width: 100%;
+  margin-bottom: 1rem;
+}
+
+.card__dice {
+  cursor: pointer;
+  position: absolute;
+  bottom: -1.75rem;
+  padding: 1em 1.15em;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--color-neon-green);
+}
+
+.card__dice:hover,
+.card__dice:focus-visible {
+  box-shadow: 0 0 2em var(--color-neon-green);
+  transition: box-shadow 0.25s ease;
+}
+
+.card__dice:hover::berfore,
+.card__dice:focus-visible::before {
+  opacity: 1;
+}
+
+footer {
+  position: absolute;
+  bottom: 1rem;
+  color: var(--color-white);
+}
+
+.attribution {
+  font-size: 11px;
+}
+
+.attribution a {
+  color: hsl(228, 45%, 64%);
+}
+
+.attribution a:visited {
+  color: hsl(270, 100%, 70%);
+}
+
+@media (min-width: 43.75em) {
+  /* ----- Rate card ----- */
+  .card {
+    gap: 1.5em;
+    padding: 2.25em 2.4em;
+    border-radius: 1em;
+  }
+
+  .card__container {
+    font-size: 28px;
+    line-height: 1.4;
+  }
+
+  .card__svg--mobile {
+    display: none;
+  }
+
+  .card__svg--desktop {
+    display: initial;
+    margin-bottom: 2rem;
+  }
+
+  .card__dice {
+    bottom: -2rem;
+    padding: 1.45em 1.55em;
+  }
+}
